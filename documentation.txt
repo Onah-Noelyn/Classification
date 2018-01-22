@@ -1,0 +1,22 @@
+Algorithm Documentation on the Comparison of Machine Learning Classifiers using Scikit Learn Python Package
+1.0.	Introduction
+ “Most of the big payoff [in data mining] has been in predictive modelling.”
+Herbert A. Edelstein (1999)
+
+Predictive modelling enables us to use data from the past and present to make good decisions about the future. Given the vast number of algorithms that can be used to predict/classify cases of interest, it is important to assess the predictive power/scores to choose suitable classifiers and make more reliable predictions. Better predictions such as reduction in false negatives and false positives is paramount wherever predictions are applied be it in the health sector, fraud detection, stock management and much more. 
+
+This software is aimed at doing so by training two classifiers and comparing its predictive power using measures which includes R-squared, confusion matrix and the ROC graph. The end goal is to pick the better performer for future classification. To do this a UCI Wisconsin Breast Cancer Data has been used. This has been selected as it is and open sourced standard binary classification problem, with two classes, 9 features and 699 instances.
+2.0.	Thought Process
+To ensure that both algorithm is compared on an equal footing, same data is used, with same percentage of test and train data used in both. The algorithm was developed as shown in fig 1 and guided by the scikit learn documentation (Pedregosa et al, 2011). 
+The process of building the algorithm was guided by an initial draft of what the requirements were as stated in the assessment guideline: read in data, process, display and write results to a file. Given that my PhD would aim in investigating burns patient in England and Wales, however due to restrictions on dataset related to this area, a compromise was made by choosing another health-related topic and then trailing one of my research questions ‘which algorithm would be a better predictor’. This software therefore investigates which algorithm would be a better predictor of the presence of cancerous tissue, more specifically classification of cases into classes 2 and 4 ['Benign', 'Malignant']. 
+With this a higher-level structure of the design process was planned out and at the same time the writing process began. It included reading in data in a format suitable for analysis and in this case a panda’s data frame. A check for missing data and the variable type was made using the function .info. This was then rectified by first converting all numbers to numeric data type and converting missing data to NaN. Then averages were used to fill in these missing data. Other options can be used to fill in data, but this was adequate given that small volume of missing data. The next process was to split the dataset in to test and train including cross validation this was done to increase reliability of results generated. With the test data used to check performance of the algorithm. This then leads to the training of both classifiers – decision tree and logistic regression - using the scikit learn packages. Here, the decision tree model was adapted given the ability to visualise the process using ‘graphviz’, the criterion for splitting cases into homogeneous groups was ‘gini’, a minimum of 2 leaf nodes (benign and malign) and a max depth of 3 (to reduce complexity)
+                           
+
+
+With the training done, new cases were predicted and a test for accuracy checked. This software trials three measures with ROC being the most important as it allows for visualisation which clearly indicates which classifier minimises false positives. The ROC plots x and y axis shows false positive and true positive rates respectively, thus choosing the curve with the higher true positive and area. The R-square measure is one of the more widely used and easy to remember measures, with a higher score indicating a better predictor. The confusion matrix indicates the count of correct vs. incorrect predictions, this is an easy to interpret measure but might be to simple in certain cases. 
+The only issue encountered was the display and saving of the visualised decision tree, a workaround was initiated which is to call the assigned variable in the IPython Console which displays the graph.
+
+
+References
+1.	Edelstein, E. A. (1999). Introduction to Data Mining and Knowledge Discovery, Third Edition 
+2.	Pedregosa et al. (2011), Scikit-learn: Machine Learning in Python, JMLR 12, pp. 2825-2830, 2011.
