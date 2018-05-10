@@ -131,13 +131,13 @@ logreg.fit(X_train, y_train)
 DT_Predictor = classifier.predict(X_test)
 #save the outcome from prediction as csv file
 DT_Predictor = pd.DataFrame(DT_Predictor)
-DT_Predictor.to_csv("C:/Users/Noelyn/Documents/python/decision tree/DT_Predicted.csv")
+DT_Predictor.to_csv("DT_Predicted.csv")
 
 #2. Logistic Regression Predictor
 LR_Predictor = logreg.predict(X_test)
 #save the outcome from prediction as csv file
 LR_Predictor = pd.DataFrame(LR_Predictor)
-LR_Predictor.to_csv("C:/Users/Noelyn/Documents/python/decision tree/LR_Predicted.csv")
+LR_Predictor.to_csv("LR_Predicted.csv")
 
 
 #STEP 4: Check Prediction Accuracy
